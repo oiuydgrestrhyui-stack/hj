@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Elite Motors | السيارات الفاخرة</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 10px;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
+        .loader-text {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, #d4af37, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+        }
+        .navbar.scrolled {
+            padding: 1rem 5%;
+            background: rgba(0,0,0,0.95);
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #d4af37, #f5e7a3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-size: 1rem;
+            color: #d4af37;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+        .btn-gold {
+            background: transparent;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.4s;
+            border-radius: 50px;
+            margin: 0 0.5rem;
+        }
+        .btn-gold:hover {
+            background: #d4af37;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212,175,55,0.3);
+        }
+        .btn-solid {
+            background: #d4af37;
+            border: none;
+            color: #000;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 5%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: #d4af37;
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        /* Cars Grid */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .car-card {
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #222;
+            position: relative;
+        }
+        .car-card:hover {
+            transform: translateY(-15px);
+            border-color: #d4af37;
+            box-shadow: 0 20px 40px rgba(212,175,55,0.2);
+        }
+        .car-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .car-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #d4af37;
+            color: #000;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+        .car-info {
+            padding: 1.5rem;
+        }
+        .car-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+        .car-price {
+            color: #d4af37;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        .car-details {
+            color: #aaa;
+            margin: 0.8rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        .btn-card {
+            background: transparent;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            font-weight: bold;
+        }
+        .btn-card:hover {
+            background: #d4af37;
+            color: #000;
+        }
+
+        /* Stats */
+        .stats {
+            background: linear-gradient(135deg, #0f0f0f, #050505);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+            gap: 2rem;
+        }
+        .stat-item h2 {
+            font-size: 3rem;
+            color: #d4af37;
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 1rem 0;
+        }
+        .testimonial-card {
+            min-width: 320px;
+            background: #111;
+            padding: 2rem;
+            border-radius: 20px;
+            scroll-snap-align: start;
+            border: 1px solid #2a2a2a;
+        }
+        .testimonial-card i {
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .contact-info {
+            background: #111;
+            padding: 2rem;
+            border-radius: 20px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #222;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 1rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 3rem 5%;
+            border-top: 1px solid #d4af37;
+            text-align: center;
+        }
+        .social-links a {
+            color: #fff;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            color: #d4af37;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 3rem; }
+            .contact-container { grid-template-columns: 1fr; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #000;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.4s;
+                gap: 2rem;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Animation Classes */
+        [data-aos] {
+            opacity: 0;
+            transition: 0.8s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+    <div class="loader-text">ELITE MOTORS</div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="logo">ELITE <span>MOTORS</span></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">الرئيسية</a></li>
+        <li><a href="#cars">الأسطول</a></li>
+        <li><a href="#about">من نحن</a></li>
+        <li><a href="#testimonials">آراء العملاء</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>عالم من الفخامة<br>والأداء الأسطوري</h1>
+            <p>اكتشف تجربة القيادة التي تحلم بها مع Elite Motors</p>
+            <div>
+                <button class="btn-gold btn-solid" onclick="document.getElementById('cars').scrollIntoView({behavior:'smooth'})">استكشف السيارات</button>
+                <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">طلب تجربة قيادة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cars Section -->
+    <section id="cars">
+        <h2 class="section-title" data-aos="fade-up">أحدث طرازاتنا الخيالية</h2>
+        <div class="cars-grid" id="carsGrid"></div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-item" data-aos="zoom-in"><h2>500+</h2><p>عميل سعيد</p></div>
+        <div class="stat-item" data-aos="zoom-in"><h2>35+</h2><p>طراز حصري</p></div>
+        <div class="stat-item" data-aos="zoom-in"><h2>24/7</h2><p>دعم فني</p></div>
+        <div class="stat-item" data-aos="zoom-in"><h2>15+</h2><p>معرض حول العالم</p></div>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+            <div data-aos="fade-right">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">نحن <span style="color:#d4af37;">Elite Motors</span></h2>
+                <p style="line-height: 1.8; color:#ccc;">نقدم لك تجربة لا مثيل لها في عالم السيارات الفاخرة. نحن لا نبيع سيارات فقط، بل نقدم أسلوب حياة. أسطولنا يضم أروع الموديلات العالمية مع تقنيات مستقبلية وأداء خيالي. نخبة من الخبراء في خدمتك لتحقيق حلم سيارتك المثالية.</p>
+                <button class="btn-gold btn-solid" style="margin-top: 1.5rem;">تعرف على قصتنا</button>
+            </div>
+            <div data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80" style="width:100%; border-radius: 20px; border: 1px solid #d4af37;" alt="About">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <h2 class="section-title" data-aos="fade-up">آراء عملاء النخبة</h2>
+        <div class="testimonials-slider" id="testimonialsContainer"></div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title" data-aos="fade-up">تواصل مع الخبراء</h2>
+        <div class="contact-container">
+            <div class="contact-info" data-aos="fade-right">
+                <h3>معلومات الاتصال</h3>
+                <p><i class="fas fa-map-marker-alt" style="color:#d4af37;"></i> دبي - مارينا، برج الفخامة</p>
+                <p><i class="fas fa-phone-alt"></i> +971 4 123 4567</p>
+                <p><i class="fas fa-envelope"></i> info@elitemotors.ae</p>
+                <div class="social-links" style="margin-top: 2rem;">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="contact-form" data-aos="fade-left">
+                <form id="contactForm">
+                    <input type="text" placeholder="الاسم الكامل" required>
+                    <input type="email" placeholder="البريد الإلكتروني" required>
+                    <textarea rows="4" placeholder="رسالتك أو استفسارك عن سيارة معينة"></textarea>
+                    <button type="submit" class="btn-gold btn-solid">إرسال الرسالة <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="logo" style="margin-bottom: 1rem;">ELITE <span>MOTORS</span></div>
+    <p>© 2025 Elite Motors - حيث تلتقي الفخامة بالمستقبل</p>
+    <div class="social-links" style="margin-top: 1rem;">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // Preloader
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 800);
+        }, 1000);
+    });
+
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        // Active Link Highlight
+        let sections = document.querySelectorAll('section');
+        let scrollPos = window.scrollY + 200;
+        sections.forEach(section => {
+            if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                let id = section.getAttribute('id');
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === '#'+id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Car Data
+    const carsData = [
+        { name: "Thunder X9", price: "$380,000", engine: "V12 6.5L", speed: "0-100 2.8s", img: "https://images.unsplash.com/photo-1503376780359-7e1b0b5e4f5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", badge: "إصدار محدود" },
+        { name: "Aura Phantom", price: "$520,000", engine: "V8 Twin-Turbo", speed: "0-100 3.1s", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", badge: "هايبرد فاخر" },
+        { name: "Nebula GT", price: "$295,000", engine: "V10 5.2L", speed: "0-100 3.3s", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", badge: "رياضية خارقة" }
+    ];
+
+    function loadCars() {
+        const container = document.getElementById('carsGrid');
+        carsData.forEach(car => {
+            const card = document.createElement('div');
+            card.className = 'car-card';
+            card.setAttribute('data-aos', 'fade-up');
+            card.innerHTML = `
+                <div class="car-img" style="background-image: url('${car.img}');">
+                    <div class="car-badge">${car.badge}</div>
+                </div>
+                <div class="car-info">
+                    <h3>${car.name}</h3>
+                    <div class="car-price">${car.price}</div>
+                    <div class="car-details"><span><i class="fas fa-tachometer-alt"></i> ${car.engine}</span><span><i class="fas fa-stopwatch"></i> ${car.speed}</span></div>
+                    <button class="btn-card" onclick="alert('تم إرسال طلب معاينة السيارة ${car.name}، سيتصل بك مندوبنا')">طلب معاينة</button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // Testimonials Data
+    const testimonialsData = [
+        { name: "خالد المنصور", text: "تجربة استثنائية.. السيارة تتجاوز الخيال. فريق Elite Motors محترف جداً.", stars: 5 },
+        { name: "سارة العمادي", text: "خدمة راقية وسيارات حصرية. أنصح الجميع بالتعامل معهم.", stars: 5 },
+        { name: "عبدالله القاسمي", text: "من أفضل صالات العرض الفاخرة. أسلوب راقي وسرعة في الإنجاز.", stars: 5 },
+        { name: "ليلى الشامسي", text: "سيارة أحلامي أصبحت حقيقة بفضل خبراء Elite Motors.", stars: 5 }
+    ];
+
+    function loadTestimonials() {
+        const container = document.getElementById('testimonialsContainer');
+        testimonialsData.forEach(t => {
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+            card.setAttribute('data-aos', 'fade-up');
+            card.innerHTML = `
+                <i class="fas fa-quote-right"></i>
+                <p style="margin: 1rem 0;">"${t.text}"</p>
+                <div style="color:#d4af37;">★★★★★</div>
+                <h4 style="margin-top: 1rem;">- ${t.name}</h4>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // Contact Form Submission
+    const contactForm = document.getElementById('contactForm');
+    if(contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('شكراً لتواصلك مع Elite Motors! سيقوم فريقنا بالرد عليك خلال 24 ساعة.');
+            this.reset();
+        });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+
+    loadCars();
+    loadTestimonials();
+
+    // Parallax effect for hero (optional)
+    window.addEventListener('scroll', () => {
+        let scrolled = window.pageYOffset;
+        let hero = document.querySelector('.hero');
+        if(hero) {
+            hero.style.backgroundPositionY = scrolled * 0.4 + 'px';
+        }
+    });
+</script>
+</body>
+</html>
