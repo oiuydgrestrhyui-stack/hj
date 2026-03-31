@@ -2,14 +2,12 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Elite Motors | السيارات الفاخرة</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -26,7 +24,7 @@
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 4px;
         }
         ::-webkit-scrollbar-track {
             background: #1a1a1a;
@@ -36,56 +34,23 @@
             border-radius: 10px;
         }
 
-        /* Preloader */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease;
-        }
-        .loader-text {
-            font-size: 2rem;
-            letter-spacing: 8px;
-            background: linear-gradient(135deg, #d4af37, #fff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
         /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 5%;
+            padding: 0.8rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(12px);
-            transition: all 0.4s ease;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
             border-bottom: 1px solid rgba(212,175,55,0.3);
         }
-        .navbar.scrolled {
-            padding: 1rem 5%;
-            background: rgba(0,0,0,0.95);
-        }
         .logo {
-            font-size: 2rem;
+            font-size: 1.3rem;
             font-weight: 800;
             background: linear-gradient(135deg, #d4af37, #f5e7a3);
             -webkit-background-clip: text;
@@ -93,79 +58,67 @@
             color: transparent;
         }
         .logo span {
-            font-size: 1rem;
+            font-size: 0.7rem;
             color: #d4af37;
         }
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             list-style: none;
         }
         .nav-links a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            transition: 0.3s;
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #d4af37;
+            font-size: 0.85rem;
             transition: 0.3s;
         }
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d4af37;
         }
         .menu-toggle {
             display: none;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover fixed;
+            min-height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
+            padding: 6rem 1rem 3rem;
         }
         .hero-content h1 {
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
         }
         .hero-content p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
             color: #ddd;
         }
         .btn-gold {
             background: transparent;
             border: 2px solid #d4af37;
             color: #d4af37;
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
+            padding: 0.7rem 1.5rem;
+            font-size: 0.9rem;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.4s;
+            transition: 0.3s;
             border-radius: 50px;
-            margin: 0 0.5rem;
+            margin: 0 0.3rem;
         }
         .btn-gold:hover {
             background: #d4af37;
             color: #000;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212,175,55,0.3);
+            transform: translateY(-2px);
         }
         .btn-solid {
             background: #d4af37;
@@ -173,36 +126,23 @@
             color: #000;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Sections */
         section {
-            padding: 100px 5%;
+            padding: 3rem 5%;
         }
         .section-title {
             text-align: center;
-            font-size: 3rem;
-            margin-bottom: 3rem;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
             position: relative;
-            display: inline-block;
-            width: 100%;
         }
         .section-title::after {
             content: '';
-            width: 80px;
-            height: 4px;
+            width: 60px;
+            height: 3px;
             background: #d4af37;
             position: absolute;
-            bottom: -15px;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 5px;
@@ -211,68 +151,69 @@
         /* Cars Grid */
         .cars-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
         .car-card {
             background: #111;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             border: 1px solid #222;
-            position: relative;
         }
         .car-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-5px);
             border-color: #d4af37;
-            box-shadow: 0 20px 40px rgba(212,175,55,0.2);
         }
         .car-img {
-            height: 240px;
+            height: 180px;
             background-size: cover;
             background-position: center;
             position: relative;
         }
         .car-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 10px;
+            right: 10px;
             background: #d4af37;
             color: #000;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
             font-weight: bold;
         }
         .car-info {
-            padding: 1.5rem;
+            padding: 1rem;
         }
         .car-info h3 {
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
         }
         .car-price {
             color: #d4af37;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin: 0.5rem 0;
+            margin: 0.3rem 0;
         }
         .car-details {
             color: #aaa;
-            margin: 0.8rem 0;
+            margin: 0.5rem 0;
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
+            font-size: 0.8rem;
         }
         .btn-card {
             background: transparent;
             border: 1px solid #d4af37;
             color: #d4af37;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
             cursor: pointer;
             transition: 0.3s;
             width: 100%;
             font-weight: bold;
+            font-size: 0.85rem;
         }
         .btn-card:hover {
             background: #d4af37;
@@ -286,72 +227,119 @@
             justify-content: space-around;
             flex-wrap: wrap;
             text-align: center;
-            gap: 2rem;
+            gap: 1.5rem;
+            padding: 2rem 5%;
         }
         .stat-item h2 {
-            font-size: 3rem;
+            font-size: 1.8rem;
             color: #d4af37;
+        }
+        .stat-item p {
+            font-size: 0.8rem;
+        }
+
+        /* About */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .about-text p {
+            line-height: 1.6;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid #d4af37;
         }
 
         /* Testimonials */
         .testimonials-slider {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            padding: 1rem 0;
+            padding: 0.5rem 0;
         }
         .testimonial-card {
-            min-width: 320px;
+            min-width: 280px;
             background: #111;
-            padding: 2rem;
-            border-radius: 20px;
+            padding: 1.2rem;
+            border-radius: 15px;
             scroll-snap-align: start;
             border: 1px solid #2a2a2a;
         }
         .testimonial-card i {
             color: #d4af37;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .testimonial-card p {
+            font-size: 0.85rem;
+            margin: 0.8rem 0;
         }
 
-        /* Contact Form */
+        /* Contact */
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
         .contact-info {
             background: #111;
-            padding: 2rem;
-            border-radius: 20px;
+            padding: 1.2rem;
+            border-radius: 15px;
+        }
+        .contact-info h3 {
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            margin: 0.8rem 0;
+            font-size: 0.85rem;
         }
         .contact-form input, .contact-form textarea {
             width: 100%;
-            padding: 1rem;
-            margin: 1rem 0;
+            padding: 0.8rem;
+            margin: 0.6rem 0;
             background: #222;
             border: none;
             border-radius: 10px;
             color: #fff;
+            font-size: 0.85rem;
         }
         .contact-form button {
             width: 100%;
-            padding: 1rem;
+            padding: 0.8rem;
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
         /* Footer */
         footer {
             background: #000;
-            padding: 3rem 5%;
+            padding: 1.5rem 5%;
             border-top: 1px solid #d4af37;
             text-align: center;
         }
+        footer .logo {
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        footer p {
+            font-size: 0.7rem;
+            margin: 0.5rem 0;
+        }
         .social-links a {
             color: #fff;
-            margin: 0 1rem;
-            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            font-size: 1.2rem;
             transition: 0.3s;
         }
         .social-links a:hover {
@@ -359,42 +347,55 @@
         }
 
         /* Responsive */
-        @media (max-width: 992px) {
-            .hero-content h1 { font-size: 3rem; }
-            .contact-container { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 55px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 70px);
+                height: calc(100vh - 55px);
                 background: #000;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                transition: 0.4s;
-                gap: 2rem;
+                transition: 0.3s;
+                gap: 1.5rem;
             }
             .nav-links.active {
                 left: 0;
             }
+            .nav-links a {
+                font-size: 1.1rem;
+            }
             .menu-toggle {
                 display: block;
             }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
         }
 
-        /* Animation Classes */
-        [data-aos] {
+        /* Animation */
+        .fade-up {
+            animation: fadeUp 0.6s ease forwards;
             opacity: 0;
-            transition: 0.8s;
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-
-<div class="preloader" id="preloader">
-    <div class="loader-text">ELITE MOTORS</div>
-</div>
 
 <nav class="navbar" id="navbar">
     <div class="logo">ELITE <span>MOTORS</span></div>
@@ -402,8 +403,8 @@
         <li><a href="#home" class="active">الرئيسية</a></li>
         <li><a href="#cars">الأسطول</a></li>
         <li><a href="#about">من نحن</a></li>
-        <li><a href="#testimonials">آراء العملاء</a></li>
-        <li><a href="#contact">تواصل معنا</a></li>
+        <li><a href="#testimonials">آراء</a></li>
+        <li><a href="#contact">اتصل</a></li>
     </ul>
     <div class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
@@ -413,71 +414,71 @@
 <main>
     <!-- Hero -->
     <section id="home" class="hero">
-        <div class="hero-content" data-aos="fade-up">
+        <div class="hero-content">
             <h1>عالم من الفخامة<br>والأداء الأسطوري</h1>
-            <p>اكتشف تجربة القيادة التي تحلم بها مع Elite Motors</p>
+            <p>اكتشف تجربة القيادة التي تحلم بها</p>
             <div>
-                <button class="btn-gold btn-solid" onclick="document.getElementById('cars').scrollIntoView({behavior:'smooth'})">استكشف السيارات</button>
-                <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">طلب تجربة قيادة</button>
+                <button class="btn-gold btn-solid" onclick="document.getElementById('cars').scrollIntoView({behavior:'smooth'})">استكشف</button>
+                <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">تواصل معنا</button>
             </div>
         </div>
     </section>
 
     <!-- Cars Section -->
     <section id="cars">
-        <h2 class="section-title" data-aos="fade-up">أحدث طرازاتنا الخيالية</h2>
+        <h2 class="section-title">أحدث طرازاتنا</h2>
         <div class="cars-grid" id="carsGrid"></div>
     </section>
 
     <!-- Stats -->
     <div class="stats">
-        <div class="stat-item" data-aos="zoom-in"><h2>500+</h2><p>عميل سعيد</p></div>
-        <div class="stat-item" data-aos="zoom-in"><h2>35+</h2><p>طراز حصري</p></div>
-        <div class="stat-item" data-aos="zoom-in"><h2>24/7</h2><p>دعم فني</p></div>
-        <div class="stat-item" data-aos="zoom-in"><h2>15+</h2><p>معرض حول العالم</p></div>
+        <div class="stat-item"><h2>500+</h2><p>عميل سعيد</p></div>
+        <div class="stat-item"><h2>35+</h2><p>طراز حصري</p></div>
+        <div class="stat-item"><h2>24/7</h2><p>دعم فني</p></div>
+        <div class="stat-item"><h2>15+</h2><p>معرض عالمي</p></div>
     </div>
 
     <!-- About -->
     <section id="about">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-            <div data-aos="fade-right">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">نحن <span style="color:#d4af37;">Elite Motors</span></h2>
-                <p style="line-height: 1.8; color:#ccc;">نقدم لك تجربة لا مثيل لها في عالم السيارات الفاخرة. نحن لا نبيع سيارات فقط، بل نقدم أسلوب حياة. أسطولنا يضم أروع الموديلات العالمية مع تقنيات مستقبلية وأداء خيالي. نخبة من الخبراء في خدمتك لتحقيق حلم سيارتك المثالية.</p>
-                <button class="btn-gold btn-solid" style="margin-top: 1.5rem;">تعرف على قصتنا</button>
+        <div class="about-container">
+            <div class="about-text">
+                <h2>نحن <span style="color:#d4af37;">Elite Motors</span></h2>
+                <p>نقدم لك تجربة لا مثيل لها في عالم السيارات الفاخرة. أسطولنا يضم أروع الموديلات العالمية مع تقنيات مستقبلية وأداء خيالي. نخبة من الخبراء في خدمتك لتحقيق حلم سيارتك المثالية.</p>
+                <button class="btn-gold btn-solid" style="margin-top: 1rem; padding: 0.5rem 1.2rem;">اعرف المزيد</button>
             </div>
-            <div data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80" style="width:100%; border-radius: 20px; border: 1px solid #d4af37;" alt="About">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80" alt="About">
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
     <section id="testimonials">
-        <h2 class="section-title" data-aos="fade-up">آراء عملاء النخبة</h2>
+        <h2 class="section-title">آراء العملاء</h2>
         <div class="testimonials-slider" id="testimonialsContainer"></div>
     </section>
 
     <!-- Contact -->
     <section id="contact">
-        <h2 class="section-title" data-aos="fade-up">تواصل مع الخبراء</h2>
+        <h2 class="section-title">تواصل معنا</h2>
         <div class="contact-container">
-            <div class="contact-info" data-aos="fade-right">
+            <div class="contact-info">
                 <h3>معلومات الاتصال</h3>
-                <p><i class="fas fa-map-marker-alt" style="color:#d4af37;"></i> دبي - مارينا، برج الفخامة</p>
+                <p><i class="fas fa-map-marker-alt" style="color:#d4af37;"></i> دبي - مارينا</p>
                 <p><i class="fas fa-phone-alt"></i> +971 4 123 4567</p>
                 <p><i class="fas fa-envelope"></i> info@elitemotors.ae</p>
-                <div class="social-links" style="margin-top: 2rem;">
+                <div class="social-links" style="margin-top: 1rem;">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <div class="contact-form" data-aos="fade-left">
+            <div class="contact-form">
                 <form id="contactForm">
                     <input type="text" placeholder="الاسم الكامل" required>
                     <input type="email" placeholder="البريد الإلكتروني" required>
-                    <textarea rows="4" placeholder="رسالتك أو استفسارك عن سيارة معينة"></textarea>
-                    <button type="submit" class="btn-gold btn-solid">إرسال الرسالة <i class="fas fa-paper-plane"></i></button>
+                    <textarea rows="3" placeholder="رسالتك"></textarea>
+                    <button type="submit" class="btn-gold btn-solid">إرسال</button>
                 </form>
             </div>
         </div>
@@ -485,49 +486,23 @@
 </main>
 
 <footer>
-    <div class="logo" style="margin-bottom: 1rem;">ELITE <span>MOTORS</span></div>
-    <p>© 2025 Elite Motors - حيث تلتقي الفخامة بالمستقبل</p>
-    <div class="social-links" style="margin-top: 1rem;">
+    <div class="logo">ELITE <span>MOTORS</span></div>
+    <p>© 2025 Elite Motors - الفخامة والمستقبل</p>
+    <div class="social-links">
         <a href="#"><i class="fab fa-twitter"></i></a>
         <a href="#"><i class="fab fa-linkedin-in"></i></a>
     </div>
 </footer>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // Preloader
-    window.addEventListener('load', function() {
-        const preloader = document.getElementById('preloader');
-        setTimeout(() => {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 800);
-        }, 1000);
-    });
-
     // Navbar Scroll Effect
     window.addEventListener('scroll', function() {
         const navbar = document.getElementById('navbar');
         if(window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+            navbar.style.padding = '0.5rem 5%';
         } else {
-            navbar.classList.remove('scrolled');
+            navbar.style.padding = '0.8rem 5%';
         }
-        // Active Link Highlight
-        let sections = document.querySelectorAll('section');
-        let scrollPos = window.scrollY + 200;
-        sections.forEach(section => {
-            if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-                let id = section.getAttribute('id');
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                    if(link.getAttribute('href') === '#'+id) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
     });
 
     // Mobile Menu Toggle
@@ -544,9 +519,9 @@
 
     // Car Data
     const carsData = [
-        { name: "Thunder X9", price: "$380,000", engine: "V12 6.5L", speed: "0-100 2.8s", img: "https://images.unsplash.com/photo-1503376780359-7e1b0b5e4f5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", badge: "إصدار محدود" },
-        { name: "Aura Phantom", price: "$520,000", engine: "V8 Twin-Turbo", speed: "0-100 3.1s", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", badge: "هايبرد فاخر" },
-        { name: "Nebula GT", price: "$295,000", engine: "V10 5.2L", speed: "0-100 3.3s", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", badge: "رياضية خارقة" }
+        { name: "Thunder X9", price: "$380,000", engine: "V12 6.5L", speed: "2.8s", img: "https://images.unsplash.com/photo-1503376780359-7e1b0b5e4f5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", badge: "محدود" },
+        { name: "Aura Phantom", price: "$520,000", engine: "V8 Twin", speed: "3.1s", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", badge: "هايبرد" },
+        { name: "Nebula GT", price: "$295,000", engine: "V10 5.2L", speed: "3.3s", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80", badge: "رياضية" }
     ];
 
     function loadCars() {
@@ -554,7 +529,6 @@
         carsData.forEach(car => {
             const card = document.createElement('div');
             card.className = 'car-card';
-            card.setAttribute('data-aos', 'fade-up');
             card.innerHTML = `
                 <div class="car-img" style="background-image: url('${car.img}');">
                     <div class="car-badge">${car.badge}</div>
@@ -562,8 +536,8 @@
                 <div class="car-info">
                     <h3>${car.name}</h3>
                     <div class="car-price">${car.price}</div>
-                    <div class="car-details"><span><i class="fas fa-tachometer-alt"></i> ${car.engine}</span><span><i class="fas fa-stopwatch"></i> ${car.speed}</span></div>
-                    <button class="btn-card" onclick="alert('تم إرسال طلب معاينة السيارة ${car.name}، سيتصل بك مندوبنا')">طلب معاينة</button>
+                    <div class="car-details"><span><i class="fas fa-tachometer-alt"></i> ${car.engine}</span><span><i class="fas fa-stopwatch"></i> 0-100 ${car.speed}</span></div>
+                    <button class="btn-card" onclick="alert('تم إرسال طلب معاينة السيارة ${car.name}')">طلب معاينة</button>
                 </div>
             `;
             container.appendChild(card);
@@ -572,10 +546,10 @@
 
     // Testimonials Data
     const testimonialsData = [
-        { name: "خالد المنصور", text: "تجربة استثنائية.. السيارة تتجاوز الخيال. فريق Elite Motors محترف جداً.", stars: 5 },
-        { name: "سارة العمادي", text: "خدمة راقية وسيارات حصرية. أنصح الجميع بالتعامل معهم.", stars: 5 },
-        { name: "عبدالله القاسمي", text: "من أفضل صالات العرض الفاخرة. أسلوب راقي وسرعة في الإنجاز.", stars: 5 },
-        { name: "ليلى الشامسي", text: "سيارة أحلامي أصبحت حقيقة بفضل خبراء Elite Motors.", stars: 5 }
+        { name: "خالد المنصور", text: "تجربة استثنائية.. السيارة تتجاوز الخيال. فريق محترف جداً.", stars: 5 },
+        { name: "سارة العمادي", text: "خدمة راقية وسيارات حصرية. أنصح بالتعامل معهم.", stars: 5 },
+        { name: "عبدالله القاسمي", text: "من أفضل صالات العرض الفاخرة. أسلوب راقي وسرعة.", stars: 5 },
+        { name: "ليلى الشامسي", text: "سيارة أحلامي أصبحت حقيقة بفضل الخبراء.", stars: 5 }
     ];
 
     function loadTestimonials() {
@@ -583,12 +557,11 @@
         testimonialsData.forEach(t => {
             const card = document.createElement('div');
             card.className = 'testimonial-card';
-            card.setAttribute('data-aos', 'fade-up');
             card.innerHTML = `
                 <i class="fas fa-quote-right"></i>
-                <p style="margin: 1rem 0;">"${t.text}"</p>
+                <p>"${t.text}"</p>
                 <div style="color:#d4af37;">★★★★★</div>
-                <h4 style="margin-top: 1rem;">- ${t.name}</h4>
+                <h4 style="margin-top: 0.8rem; font-size:0.9rem;">- ${t.name}</h4>
             `;
             container.appendChild(card);
         });
@@ -599,12 +572,12 @@
     if(contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('شكراً لتواصلك مع Elite Motors! سيقوم فريقنا بالرد عليك خلال 24 ساعة.');
+            alert('شكراً لتواصلك! سنرد عليك خلال 24 ساعة.');
             this.reset();
         });
     }
 
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -615,23 +588,42 @@
         });
     });
 
-    // Initialize AOS
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
+    // Simple fade animation on scroll
+    const fadeElements = document.querySelectorAll('.car-card, .stat-item, .about-container, .testimonial-card, .contact-container');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s ease';
+        observer.observe(el);
     });
 
     loadCars();
     loadTestimonials();
 
-    // Parallax effect for hero (optional)
+    // Active link highlight
     window.addEventListener('scroll', () => {
-        let scrolled = window.pageYOffset;
-        let hero = document.querySelector('.hero');
-        if(hero) {
-            hero.style.backgroundPositionY = scrolled * 0.4 + 'px';
-        }
+        let sections = document.querySelectorAll('section');
+        let scrollPos = window.scrollY + 100;
+        sections.forEach(section => {
+            if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                let id = section.getAttribute('id');
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === '#'+id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
     });
 </script>
 </body>
